@@ -282,6 +282,10 @@ public class RNPushNotificationHelper {
                 notification.setVibrate(new long[]{0, vibration});
             }
 
+            if (!bundle.containsKey("lights") || bundle.getBoolean("lights")) {
+              notification.setDefaults(NotificationCompat.DEFAULT_LIGHTS);
+            }
+
             JSONArray actionsArray = null;
             try {
                 actionsArray = bundle.getString("actions") != null ? new JSONArray(bundle.getString("actions")) : null;
